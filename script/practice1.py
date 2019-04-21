@@ -1,38 +1,46 @@
 #!/usr/local/bin/python3
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 #from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from time import sleep
 import datetime
+
 
 def execSearch(browser: webdriver):
     """
     Googleで検索を実行する
     :param browser: webdriver
     """
+
     # スクリーンショットのファイル名用に日付を取得
     dt = datetime.datetime.today()
     dtstr = dt.strftime("%Y%m%d%H%M%S")
 
-    # Googleにアクセス
-    browser.get('https://www.google.co.jp/')
-    sleep(1)
+    # get request
+    browser.get("http://www.python.org")
 
-   # キーワードの入力
-    search_box = browser.find_element_by_name("q")
-    search_box.send_keys('docker selenium')
+    # check words int title
+    assert "Python" in browser.title
 
-    # 検索実行
-    search_box.submit()
-    sleep(1)
+    # select input elem
+    elem = browser.find_element_by_name("q")
+    # send key
+    elem.clear()
+    elem.send_keys("pycon")
+    elem.send_keys(Keys.RETURN)
 
-    # スクリーンショット
-    browser.save_screenshot('images/' + dtstr + '.png')
+    # exists results?
+    assert "No results found." not in browser.page_source
+
+    # brower close (quit: close one tab)
+    browser.close()
 
 
 if __name__ == '__main__':
+    # ex1
     try:
-        #browser = webdriver.Firefox()  # 普通のFilefoxを制御する場合
+        # browser = webdriver.Firefox()  # 普通のFilefoxを制御する場合
         # browser = webdriver.Chrome()   # 普通のChromeを制御する場合
 
         # HEADLESSブラウザに接続
@@ -47,4 +55,3 @@ if __name__ == '__main__':
         # 終了
         browser.close()
         browser.quit()
-
