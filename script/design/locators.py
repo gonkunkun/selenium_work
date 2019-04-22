@@ -13,6 +13,11 @@ class MainPageLocatars(object):
     SEARCH_LIST = (By.CLASS_NAME, 's-result-list sg-row')
 
 
+class SearchPageLocators(object):
+    SEE_MORE = (By.XPATH, '//*[@id="departments"]/ul/li[11]/span/div/a/span')
+    A = (By.LINK_TEXT, 'Skip to main search results')
+
+
 # class LoginPageLocatars(object):
 #     EMAIL = (By.ID, 'ap_email')
 #     PASSWORD = (By.ID, 'ap_password')

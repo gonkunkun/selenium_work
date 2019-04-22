@@ -22,6 +22,7 @@ class MainPage():
     def search_item(self, item):
         self.driver.find_element(*self.locator.SEARCH).send_keys(item)
         self.driver.find_element(*self.locator.SEARCH).send_keys(Keys.ENTER)
+        return SearchPage(self.driver)
         # return self.driver.find_element(*self.locator.SEARCH_LIST).text
 
 #     def click_sign_up_button(self):
@@ -33,6 +34,18 @@ class MainPage():
 #         self.hover(*self.locator.ACCOUNT)
 #         self.find_element(*self.locator.LOGIN).click()
 #         return LoginPage(self.driver)
+
+
+class SearchPage():
+    def __init__(self, driver):
+        self.driver = driver
+        self.locator = SearchPageLocators
+
+    def push_side_pulldown(self):
+        self.driver.find_element(*self.locator.SEE_MORE).click()
+
+    def push_a(self):
+        self.driver.find_element(*self.locator.A).click()
 
 
 # class LoginPage(Page):

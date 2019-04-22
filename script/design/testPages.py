@@ -33,42 +33,54 @@ class TestPages(unittest.TestCase):
         # 検索
         print("\n" + str(test_cases(1)))
         page = MainPage(self.driver)
-        page.search_item("Nexus")
+        sPage = page.search_item("Nexus")
 
-    # def test_search_item(self):
-    #     print("\n" + str(test_cases(1)))
-    #     page = MainPage(self.driver)
-    #     search_result = page.search_item("Nexus")
-        # self.assertIn("Nexus", search_result)
+        # タブ選択
+        print("\n" + str(test_cases(1)))
+        # sPage = SearchPage(self.driver)
+        sPage.push_side_pulldown()
 
-    # def test_sign_up_button(self):
-    #     print "\n" + str(test_cases(2))
-    #     page = MainPage(self.driver)
-    #     signUpPage = page.click_sign_up_button()
-    #     self.assertIn("ap/register", signUpPage.get_url())
+        # ハイパーリンク選択
+        print("\n" + str(test_cases(1)))
+        sPage.push_a()
 
-    # def test_sign_in_button(self):
-    #     print "\n" + str(test_cases(3))
-    #     page = MainPage(self.driver)
-    #     loginPage = page.click_sign_in_button()
-    #     self.assertIn("ap/signin", loginPage.get_url())
 
-    # def test_sign_in_with_valid_user(self):
-    #     print "\n" + str(test_cases(4))
-    #     mainPage = MainPage(self.driver)
-    #     loginPage = mainPage.click_sign_in_button()
-    #     result = loginPage.login_with_valid_user("valid_user")
-    #     self.assertIn("yourstore/home", result.get_url())
+# def test_search_item(self):
+#     print("\n" + str(test_cases(1)))
+#     page = MainPage(self.driver)
+#     search_result = page.search_item("Nexus")
+# self.assertIn("Nexus", search_result)
 
-    # def test_sign_in_with_in_valid_user(self):
-    #     print "\n" + str(test_cases(5))
-    #     mainPage = MainPage(self.driver)
-    #     loginPage = mainPage.click_sign_in_button()
-    #     result = loginPage.login_with_in_valid_user("invalid_user")
-    #     self.assertIn("There was a problem with your request", result)
+# def test_sign_up_button(self):
+#     print "\n" + str(test_cases(2))
+#     page = MainPage(self.driver)
+#     signUpPage = page.click_sign_up_button()
+#     self.assertIn("ap/register", signUpPage.get_url())
 
-    def tearDown(self):
-        self.driver.close()
+# def test_sign_in_button(self):
+#     print "\n" + str(test_cases(3))
+#     page = MainPage(self.driver)
+#     loginPage = page.click_sign_in_button()
+#     self.assertIn("ap/signin", loginPage.get_url())
+
+# def test_sign_in_with_valid_user(self):
+#     print "\n" + str(test_cases(4))
+#     mainPage = MainPage(self.driver)
+#     loginPage = mainPage.click_sign_in_button()
+#     result = loginPage.login_with_valid_user("valid_user")
+#     self.assertIn("yourstore/home", result.get_url())
+
+# def test_sign_in_with_in_valid_user(self):
+#     print "\n" + str(test_cases(5))
+#     mainPage = MainPage(self.driver)
+#     loginPage = mainPage.click_sign_in_button()
+#     result = loginPage.login_with_in_valid_user("invalid_user")
+#     self.assertIn("There was a problem with your request", result)
+
+
+def tearDown(self):
+    print("end")
+    self.driver.close()
 
 
 if __name__ == "__main__":
